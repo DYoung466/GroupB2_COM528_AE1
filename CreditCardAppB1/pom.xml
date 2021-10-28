@@ -29,13 +29,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.solent.com504.oodd</groupId>
-            <artifactId>BankClient</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/client/target/bank-client-1.0-SNAPSHOT.jar</systemPath>
-        </dependency>
     </dependencies>
 
     <build>
