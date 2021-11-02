@@ -12,6 +12,11 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <H1>Home</H1>
+    <H1>Transfer Money Between Accounts</h1>
+    
+    <form>
+        <input type="submit" value="Submit Transaction">
+    </form>
 </main>
 
 

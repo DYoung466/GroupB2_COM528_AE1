@@ -1,17 +1,18 @@
 <%-- 
-    Document   : content
-    Created on : Jan 4, 2020, 11:19:47 AM
-    Author     : cgallen
+    Document   : accountview
+    Created on : 2 Nov 2021, 13:14:02
+    Author     : Ben
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    request.setAttribute("selectedPage","home");
+    request.setAttribute("selectedPage","accountview");
 %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>Home</H1>
+    <H1>Bank Account</H1>
+
 </main>
 
 

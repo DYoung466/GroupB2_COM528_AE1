@@ -17,7 +17,7 @@
         <link rel="icon" href="../../favicon.ico">
         <!--<link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/navbar/">-->
 
-        <title>Navbar Template for Bootstrap</title>
+        <title>Banking App</title>
 
         <!-- Bootstrap core CSS -->
         <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
@@ -46,6 +46,8 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="./home.jsp">Home</a></li>
+                            <li <% if ("bankaccount".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="./bankaccount.jsp">Bank Accounts</a></li>
+                            <li <% if ("transactions".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="./transactions.jsp">Transactions</a></li>
                             <li <% if ("verify".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="./verify.jsp">Card Verification</a></li>
                             <li <% if ("about".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="./about.jsp">About</a></li> 
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="./contact.jsp">Contact</a></li>
