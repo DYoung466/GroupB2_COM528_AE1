@@ -24,3 +24,6 @@ hs_err_pid*
 /CreditCardAppB1/simplePropertiesDaoWebApp/src/main/web/target/
 /CreditCardAppB1/simplePropertiesDaoWebApp/target/
 /CreditCardAppB1/web/src/main/web/target/
+/web/target/
+/CreditCardApp/web/target/
+/CreditCardApp/client/target/
