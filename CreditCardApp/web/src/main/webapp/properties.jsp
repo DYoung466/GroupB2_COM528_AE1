@@ -12,6 +12,7 @@
     String cardnumber = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.cardnumber");
     String cvv = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.cvv");
     String expirydate = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.expirydate");
+    String name = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.name");
     String message = "";
     
     String action = (String) request.getParameter("action");
@@ -23,6 +24,7 @@
         cardnumber = (String) request.getParameter("cardnumber");
         cvv = (String) request.getParameter("cvv");
         expirydate = (String) request.getParameter("expirydate");
+        name = (String) request.getParameter("name");
 
         propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.url", url);
         propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.username", username);
@@ -30,6 +32,7 @@
         propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.cardnumber", cardnumber);
         propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.cvv", cvv);
         propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.expirydate", expirydate);
+        propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.name", name);
 
     }
 
@@ -50,9 +53,13 @@
             <p>Shop's Card Number: <input type="text" name="cardnumber" value="<%=cardnumber%>"></p>
             <p>CVV: <input type="text" name="cvv" value="<%=cvv%>"></p>
             <p>Expiry Date: <input type="text" name="expirydate" value="<%=expirydate%>"></p>
+            <p>Name: <input type="text" name="name" value="<%=name%>"></p>
             <input type="hidden" name="action" value="updateProperties">
 
             <button class="btn" type="submit" >Update Bank And Shopkeeper Details</button>
-        </form> 
+        </form>
+        <form action="http://localhost:8080/properties.jsp/home.jsp">
+            <button type="submit">Use Card Terminal</button>
+        </form>
     </body>
 </html>
