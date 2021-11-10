@@ -30,26 +30,22 @@
     
     String action = (String) request.getParameter("action");
     if ("sendmoney".equals(action)) {
+        String custcardnumber = request.getParameter("custcardnumber");
+        String custcvv = request.getParameter("custcvv");
+        String custexpirydate = request.getParameter("custexpirydate");
+        String custname = request.getParameter("custname");
+        String money = request.getParameter("money");
+        
+
+        
         message = "Connecting with bank";
-        custcardnumber = (String) request.getParameter("custcardnumber");
-        custcvv = (String) request.getParameter("custcvv");
-        custexpirydate = (String) request.getParameter("custexpirydate");
+        String bankUrl = "http://localhost:8080/bank/rest";
+        CreditCard fromCard = null;
+        CreditCard toCard = null;
 
-
-        propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.cardnumber", cardnumber);
-        propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.cvv", cvv);
-        propertiesDao.setProperty("org.solent.ood.simplepropertiesdaowebapp.expirydate", expirydate);
-
-    }
+        String toUsername=null;
+        String toPassword=null;
     
-    String bankUrl = "http://localhost:8080/bank/rest";
-    CreditCard fromCard = null;
-    CreditCard toCard = null;
-    
-    String toUsername=null;
-    String toPassword=null;
-    
-    {
         fromCard = new CreditCard();
         fromCard.setCardnumber(custcardnumber);
         fromCard.setCvv(custcvv);
@@ -66,29 +62,38 @@
         
         toUsername = "testuser2";
         toPassword = "defaulttestpass";
-    }
-    {
-        BankRestClient client = new BankRestClientImpl(bankUrl);
-
-        Double amount = 0.0;
-
-        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
-        LOG.debug("transaction reply:" + reply);
-
-        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
-    }
     
-    {
+        
         BankRestClient client = new BankRestClientImpl(bankUrl);
-
         Double amount = 0.0;
+        try{
+            amount = Double.parseDouble(money);
+            System.out.println(amount);
+        }catch (Exception e){
+            
+        }
+       
+        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
+        
+    
+        
+     
+
+       
+    
+    
+    
+        //BankRestClient client = new BankRestClientImpl(bankUrl);
+
+ 
 
         // testing with auth
  
-        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
-        LOG.debug("transaction with auth reply:" + reply);
+        //TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
         
-        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
+       
+
+    
 
     }
 
@@ -113,6 +118,7 @@
             <p>CVV: <input type="text" name="custcvv" value="custcvv"></p>
             <p>Expiry Date: <input type="text" name="custexpirydate" value="custexpirydate"></p>
             <p>Name: <input type="text" name="custname" value="custname"></p>
+            <p>Amount: <input type="text" name="money" value="money"></p>
             <input type="hidden" name="action" value="sendmoney">
 
             <button class="btn" type="submit" >Send Transfer</button>
