@@ -56,7 +56,7 @@ public class BankClientTest {
 
         BankRestClient client = new BankRestClientImpl(bankUrl);
 
-        Double amount = 0.0;
+        Double amount = Double.parseDouble("900.00");
 
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
         LOG.debug("transaction reply:" + reply);

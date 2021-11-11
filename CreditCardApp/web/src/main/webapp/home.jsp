@@ -28,13 +28,15 @@
     String name = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.name");
     String message = "";
     
+    String custcardnumber = request.getParameter("custcardnumber");
+    String custcvv = request.getParameter("custcvv");
+    String custexpirydate = request.getParameter("custexpirydate");
+    String custname = request.getParameter("custname");
+    String money = request.getParameter("money");
+    
     String action = (String) request.getParameter("action");
     if ("sendmoney".equals(action)) {
-        String custcardnumber = request.getParameter("custcardnumber");
-        String custcvv = request.getParameter("custcvv");
-        String custexpirydate = request.getParameter("custexpirydate");
-        String custname = request.getParameter("custname");
-        String money = request.getParameter("money");
+
         
 
         
@@ -47,33 +49,31 @@
         String toPassword=null;
     
         fromCard = new CreditCard();
-        fromCard.setCardnumber(custcardnumber);
-        fromCard.setCvv(custcvv);
-        fromCard.setEndDate(custexpirydate);
+        fromCard.setCardnumber("5133880000000012");
+        fromCard.setCvv("123");
+        fromCard.setEndDate("11/21");
         fromCard.setIssueNumber("01"); 
-        fromCard.setName(custname);
+        fromCard.setName("test user1");
 
         toCard = new CreditCard();
-        toCard.setCardnumber(cardnumber);
-        toCard.setCvv(cvv);
-        toCard.setEndDate(expirydate);
+        toCard.setCardnumber("4285860000000021");
+        toCard.setCvv("123");
+        toCard.setEndDate("11/21");
         toCard.setIssueNumber("01");
-        toCard.setName(name);
+        toCard.setName("test user2");
         
         toUsername = "testuser2";
         toPassword = "defaulttestpass";
     
         
         BankRestClient client = new BankRestClientImpl(bankUrl);
-        Double amount = 0.0;
-        try{
-            amount = Double.parseDouble(money);
-            System.out.println(amount);
-        }catch (Exception e){
-            
-        }
-       
+        
+        Double amount = Double.parseDouble(money);
+        System.out.println(amount);
+
         TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
+        
+        
         
     
         
@@ -104,12 +104,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
     </head>
-    <body>
-        <p><%=cardnumber%></p>
-        <p><%=username%></p>
-        <p><%=password%></p>
-        <p><%=expirydate%></p>
-        
+        <p><%=money %></p>
         
         <h1>Card Details</h1>
         <p><%=message %></p>
