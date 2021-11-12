@@ -38,6 +38,7 @@
             <groupId>org.solent.com504.oodd</groupId>
             <artifactId>bank-client</artifactId>
             <version>${project.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -49,7 +50,6 @@
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
-            <scope>provided</scope>
         </dependency>
         
         <!-- Log4j API and Core implementation  -->

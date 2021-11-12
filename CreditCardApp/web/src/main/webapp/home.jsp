@@ -15,6 +15,7 @@
 <%@page import="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus"%>
 <%@page import="org.solent.com504.oodd.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     PropertiesDao propertiesDao = WebObjectFactory.getPropertiesDao();
@@ -33,6 +34,7 @@
     String custexpirydate = request.getParameter("custexpirydate");
     String custname = request.getParameter("custname");
     String money = request.getParameter("money");
+    String bankUrl = "http://localhost:8080/bank/rest";
     
     String action = (String) request.getParameter("action");
     if ("sendmoney".equals(action)) {
@@ -40,8 +42,7 @@
         
 
         
-        message = "Connecting with bank";
-        String bankUrl = "http://localhost:8080/bank/rest";
+        message = "Connecting with banks";
         CreditCard fromCard = null;
         CreditCard toCard = null;
 
@@ -67,11 +68,15 @@
     
         
         BankRestClient client = new BankRestClientImpl(bankUrl);
-        
-        Double amount = Double.parseDouble(money);
-        System.out.println(amount);
+        try {
+            Double amount = Double.parseDouble("100.00");
+            System.out.println(amount);
+            TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
+        }
+        catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }  
 
-        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
         
         
         
@@ -105,6 +110,7 @@
         <title>Home</title>
     </head>
         <p><%=money %></p>
+        <p><%=bankUrl %></p>
         
         <h1>Card Details</h1>
         <p><%=message %></p>
