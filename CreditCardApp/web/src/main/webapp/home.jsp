@@ -4,7 +4,9 @@
     Author     : Ben
 --%>
 
-
+<%
+   request.setAttribute("selectedPage","home");
+%>
 
 <%@page import="org.solent.ood.simplepropertiesdaowebapp.dao.WebObjectFactory"%>
 <%@page import="org.solent.ood.simplepropertiesdaowebapp.dao.PropertiesDao"%>
@@ -20,6 +22,7 @@
 <%
     PropertiesDao propertiesDao = WebObjectFactory.getPropertiesDao();
     
+    // Sets properties values from properties.jsp into variables
     String url = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.url");
     String username = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.username");
     String password = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.password");
@@ -29,76 +32,53 @@
     String name = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.name");
     String message = "";
     
-    String custcardnumber = request.getParameter("custcardnumber");
-    String custcvv = request.getParameter("custcvv");
-    String custexpirydate = request.getParameter("custexpirydate");
-    String custname = request.getParameter("custname");
-    String money = request.getParameter("money");
-    String bankUrl = "http://localhost:8080/bank/rest";
+    // Takes input from user in HTML form for customer details
+    String cust_cardnumber = request.getParameter("custcardnumber");
+    String cust_cvv = request.getParameter("custcvv");
+    String cust_expirydate = request.getParameter("custexpirydate");
+    String cust_name = request.getParameter("custname");
     
+    // Bank url
+    String bankUrl = "http://com528bank.ukwest.cloudapp.azure.com:8080/rest/";
+    
+    //Starts client
+    BankRestClient client = new BankRestClientImpl(bankUrl);
+    
+    // Defining variables
+    TransactionReplyMessage reply = null;
+    
+    CreditCard fromCard = null;
+    CreditCard toCard = null;
+
+    
+    //Get action
     String action = (String) request.getParameter("action");
-    if ("sendmoney".equals(action)) {
-
-        
-
-        
-        message = "Connecting with banks";
-        CreditCard fromCard = null;
-        CreditCard toCard = null;
-
-        String toUsername=null;
-        String toPassword=null;
     
+    if ("sendmoney".equals(action)) {
+        // Message to show successful transfer
+        message = "Successful Transfer!";
+        
+        // Card from
         fromCard = new CreditCard();
-        fromCard.setCardnumber("5133880000000012");
-        fromCard.setCvv("123");
-        fromCard.setEndDate("11/21");
+        fromCard.setCardnumber(cust_cardnumber);
+        fromCard.setCvv(cust_cvv);
+        fromCard.setEndDate(cust_expirydate);
         fromCard.setIssueNumber("01"); 
         fromCard.setName("test user1");
-
+        
+        //Card to
         toCard = new CreditCard();
-        toCard.setCardnumber("4285860000000021");
-        toCard.setCvv("123");
-        toCard.setEndDate("11/21");
+        toCard.setCardnumber(cardnumber);
+        toCard.setCvv(cvv);
+        toCard.setEndDate(expirydate);
         toCard.setIssueNumber("01");
         toCard.setName("test user2");
         
-        toUsername = "testuser2";
-        toPassword = "defaulttestpass";
-    
+        // Customer amount
+        Double amount = Double.parseDouble(request.getParameter("amount").toString());
         
-        BankRestClient client = new BankRestClientImpl(bankUrl);
-        try {
-            Double amount = Double.parseDouble("100.00");
-            System.out.println(amount);
-            TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
-        }
-        catch (Exception e) {
-            System.out.println("Exception: " + e);
-        }  
 
-        
-        
-        
-    
-        
-     
-
-       
-    
-    
-    
-        //BankRestClient client = new BankRestClientImpl(bankUrl);
-
- 
-
-        // testing with auth
- 
-        //TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
-        
-       
-
-    
+        reply = client.transferMoney(fromCard, toCard, amount);
 
     }
 
@@ -109,23 +89,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
     </head>
-        <p><%=money %></p>
+        <p>Bank Url:</p>
         <p><%=bankUrl %></p>
         
         <h1>Card Details</h1>
         <p><%=message %></p>
         <form action="./home.jsp" method="POST">
-            <p>Card Number: <input type="text" name="custcardnumber" value="custcardnumber"></p>
-            <p>CVV: <input type="text" name="custcvv" value="custcvv"></p>
-            <p>Expiry Date: <input type="text" name="custexpirydate" value="custexpirydate"></p>
-            <p>Name: <input type="text" name="custname" value="custname"></p>
-            <p>Amount: <input type="text" name="money" value="money"></p>
+            <p>Card Number: <input type="text" name="custcardnumber" value="" required></p>
+            <p>CVV: <input type="text" name="custcvv" value="" required></p>
+            <p>Expiry Date: <input type="text" name="custexpirydate" value="" required></p>
+            <p>Name: <input type="text" name="custname" value="" required></p>
+            <p>Amount: <input type="text" name="amount" value="" required></p>
             <input type="hidden" name="action" value="sendmoney">
-
-            <button class="btn" type="submit" >Send Transfer</button>
+                <button class="btn" type="submit" >Send Transfer</button>
         </form>
             
-        <form action="http://localhost:8080/properties.jsp/properties.jsp">
+        <form action="http://localhost:8080/properties.jsp">
             <button type="submit">Update Shopkeeper's details</button>
         </form>
     </body>
