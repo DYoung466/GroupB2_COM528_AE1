@@ -107,6 +107,7 @@
 <h1>Card Details</h1>
 <main role="main" class="container">
     <p><%=message %></p>
+    <p><%=reply %></p>
     <br>
     <div id="Card Details">
         <form action="./home.jsp" method="POST">  
@@ -114,32 +115,32 @@
                <tbody>
                   <tr>
                      <td>Name</td>
-                     <td><input type="text" name="custname" value="test user1" required></td>
+                     <td><input type="text" name="custname" value="<%=cust_name%>" required></td>
                   </tr>
                   <tr>
                      <td>Credit Card Number</td>
-                     <td><input type="text" name="custcardnumber" value="5133880000000012" required></td>
+                     <td><input type="text" name="custcardnumber" value="<%=cust_cardnumber%>" required></td>
                   </tr>
                   <tr>
                      <td>Expiry Date</td>
-                     <td><input type="text" name="custexpirydate" value="11/21" required></td>
+                     <td><input type="text" name="custexpirydate" value="<%=cust_expirydate%>" required></td>
                   </tr>
                   <tr>
                      <td>CVV Code</td>
-                     <td><input type="text" name="custcvv" value="123" class="form-group col-md-2" required></td>
+                     <td><input type="text" name="custcvv" value="<%=cust_cvv%>" required></td>
                   </tr>
                   <tr>
                      <td>Issue Number</td>
-                     <td><input type="text" name="custissuenumber" value="01" required></td>
+                     <td><input type="text" name="custissuenumber" value="<%=cust_issuenumber%>" required></td>
                   </tr>
                   <tr>
                      <td>Amount</td>
-                     <td><input type="text" name="amount" value="28" class="form-group col-md-2" required></td>
+                     <td><input type="text" name="amount" value="" required></td>
                   </tr>
                </tbody>
             </table>
-            <input type="submit" name="sendmoney" value="Transfer Money">
-            <input type="submit" name="refund" value="Refund">
+            <input class="btn ml-2 rounded" type="submit" name="sendmoney" value="Transfer Money">
+            <input class="btn ml-2 rounded" type="submit" name="refund" value="Refund">
         </form>
     </div>
          

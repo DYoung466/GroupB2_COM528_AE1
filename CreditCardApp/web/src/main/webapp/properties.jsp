@@ -49,13 +49,13 @@
         <h1>Bank And Shopkeeper Details</h1>
         <p><%=message %></p>
         <main role="main" class="container">
-        <form class="form-card" method="POST" id="card-form">
+        <form class="form-card" method="POST">
            <div class="form-group">
               <table class="table">
                  <tbody>
                     <tr>
                        <td>Bank's Url</td>
-                       <td><input type="text" size="36" name="url" value="<%=url%>"></td>
+                       <td><input type="text" name="url" value="<%=url%>"></td>
                     </tr>
                  </tbody>
               </table>
@@ -64,22 +64,22 @@
                  <tbody>
                     <tr>
                        <td>Full Name</td>
-                       <td><input type="text" size="36" name="name" value="<%=name%>" required></td>
+                       <td><input type="text" name="name" value="<%=name%>" required></td>
                     </tr>
                     <tr>
                        <td>Card Number</td>
-                       <td><input type="text" size="36" name="cardnumber" value="<%=cardnumber%>" required></td>
+                       <td><input type="text" name="cardnumber" value="<%=cardnumber%>" required></td>
                     </tr>
                     <td>Issue Number</td>
-                    <td><input type="text" size="36" name="issuenumber" value="<%=issuenumber%>" required></td>
+                    <td><input type="text" name="issuenumber" value="<%=issuenumber%>" required></td>
                     </tr> 
                     <tr>
                        <td>Expiry Date</td>
-                       <td><input type="text" size="36" name="expirydate" value="<%=expirydate%>" required></td>
+                       <td><input type="text" name="expirydate" value="<%=expirydate%>" required></td>
                     </tr>
                     <tr>
-                       <td>Cvv Code</td>
-                       <td><input type="text" size="36" name="cvv" value="<%=cvv%>" class="form-group col-md-2"></td>
+                       <td>CVV Code</td>
+                       <td><input type="text" name="cvv" value="<%=cvv%>" ></td>
                     </tr>
                  </tbody>
               </table>
