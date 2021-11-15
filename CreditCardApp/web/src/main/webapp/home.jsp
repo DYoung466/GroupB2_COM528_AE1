@@ -23,12 +23,11 @@
     PropertiesDao propertiesDao = WebObjectFactory.getPropertiesDao();
     
     // Sets properties values from properties.jsp into variables
-    String url = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.url");
-    String username = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.username");
-    String password = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.password");
+    String bankUrl = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.url");
     String cardnumber = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.cardnumber");
     String cvv = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.cvv");
     String expirydate = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.expirydate");
+    String issuenumber = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.issuenumber");
     String name = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.name");
     String message = "";
     
@@ -37,9 +36,8 @@
     String cust_cvv = request.getParameter("custcvv");
     String cust_expirydate = request.getParameter("custexpirydate");
     String cust_name = request.getParameter("custname");
+    String cust_issuenumber = request.getParameter("custissuenumber");
     
-    // Bank url
-    String bankUrl = "http://com528bank.ukwest.cloudapp.azure.com:8080/rest/";
     
     //Starts client
     BankRestClient client = new BankRestClientImpl(bankUrl);
@@ -52,9 +50,9 @@
 
     
     //Get action
-    String action = (String) request.getParameter("action");
+   
     
-    if ("sendmoney".equals(action)) {
+    if (request.getParameter("sendmoney") != null) {
         // Message to show successful transfer
         message = "Successful Transfer!";
         
@@ -63,16 +61,16 @@
         fromCard.setCardnumber(cust_cardnumber);
         fromCard.setCvv(cust_cvv);
         fromCard.setEndDate(cust_expirydate);
-        fromCard.setIssueNumber("01"); 
-        fromCard.setName("test user1");
+        fromCard.setIssueNumber(cust_issuenumber); 
+        fromCard.setName(cust_name);
         
         //Card to
         toCard = new CreditCard();
         toCard.setCardnumber(cardnumber);
         toCard.setCvv(cvv);
         toCard.setEndDate(expirydate);
-        toCard.setIssueNumber("01");
-        toCard.setName("test user2");
+        toCard.setIssueNumber(issuenumber);
+        toCard.setName(name);
         
         // Customer amount
         Double amount = Double.parseDouble(request.getParameter("amount").toString());
@@ -80,33 +78,71 @@
 
         reply = client.transferMoney(fromCard, toCard, amount);
 
+    } else if (request.getParameter("refund") != null) {
+        message = "Successful Refund!";
+        //Card From
+        fromCard = new CreditCard();
+        fromCard.setCardnumber(cust_cardnumber);
+        fromCard.setCvv(cust_cvv);
+        fromCard.setEndDate(cust_expirydate);
+        fromCard.setIssueNumber(cust_issuenumber); 
+        fromCard.setName(cust_name);
+        
+        //Card to
+        toCard = new CreditCard();
+        toCard.setCardnumber(cardnumber);
+        toCard.setCvv(cvv);
+        toCard.setEndDate(expirydate);
+        toCard.setIssueNumber(issuenumber);
+        toCard.setName(name);
+       
+       //Amount
+       double amount = Double.parseDouble(request.getParameter("amount").toString());
+       
+       reply = client.transferMoney(toCard, fromCard, amount);
     }
 
 %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home</title>
-    </head>
-        <p>Bank Url:</p>
-        <p><%=bankUrl %></p>
-        
-        <h1>Card Details</h1>
-        <p><%=message %></p>
-        <form action="./home.jsp" method="POST">
-            <p>Card Number: <input type="text" name="custcardnumber" value="" required></p>
-            <p>CVV: <input type="text" name="custcvv" value="" required></p>
-            <p>Expiry Date: <input type="text" name="custexpirydate" value="" required></p>
-            <p>Name: <input type="text" name="custname" value="" required></p>
-            <p>Amount: <input type="text" name="amount" value="" required></p>
-            <input type="hidden" name="action" value="sendmoney">
-                <button class="btn" type="submit" >Send Transfer</button>
+<jsp:include page="header.jsp" />
+<h1>Card Details</h1>
+<main role="main" class="container">
+    <p><%=message %></p>
+    <br>
+    <div id="Card Details">
+        <form action="./home.jsp" method="POST">  
+            <table class="table">
+               <tbody>
+                  <tr>
+                     <td>Name</td>
+                     <td><input type="text" name="custname" value="test user1" required></td>
+                  </tr>
+                  <tr>
+                     <td>Credit Card Number</td>
+                     <td><input type="text" name="custcardnumber" value="5133880000000012" required></td>
+                  </tr>
+                  <tr>
+                     <td>Expiry Date</td>
+                     <td><input type="text" name="custexpirydate" value="11/21" required></td>
+                  </tr>
+                  <tr>
+                     <td>CVV Code</td>
+                     <td><input type="text" name="custcvv" value="123" class="form-group col-md-2" required></td>
+                  </tr>
+                  <tr>
+                     <td>Issue Number</td>
+                     <td><input type="text" name="custissuenumber" value="01" required></td>
+                  </tr>
+                  <tr>
+                     <td>Amount</td>
+                     <td><input type="text" name="amount" value="28" class="form-group col-md-2" required></td>
+                  </tr>
+               </tbody>
+            </table>
+            <input type="submit" name="sendmoney" value="Transfer Money">
+            <input type="submit" name="refund" value="Refund">
         </form>
-            
-        <form action="http://localhost:8080/properties.jsp">
-            <button type="submit">Update Shopkeeper's details</button>
-        </form>
-    </body>
-</html>
+    </div>
+         
+         
+      
 
