@@ -18,6 +18,12 @@
 <%@page import="org.solent.com504.oodd.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage"%>
 
+<%@ page import="org.apache.logging.log4j.Logger" %>
+<%@ page import="org.apache.logging.log4j.LogManager" %>
+        <% Logger log = LogManager.getLogger(this.getClass());
+           log.error("Show ERROR message");
+           %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     PropertiesDao propertiesDao = WebObjectFactory.getPropertiesDao();
@@ -103,7 +109,23 @@
     }
 
 %>
+<head>
+    <!-- The below 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+        
+    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./resources/css/navbar.css" rel="stylesheet">
+        
+    <script src="./resources/js/jquery.min.js"></script>
+    <script src="./resources/js/bootstrap.min.js"></script>
+ </head>
 <jsp:include page="header.jsp" />
+
+<script src="./resources/js/keypad.js" defer></script>
 <h1>Card Details</h1>
 <main role="main" class="container">
     <p><%=message %></p>
@@ -115,27 +137,32 @@
                <tbody>
                   <tr>
                      <td>Name</td>
-                     <td><input type="text" name="custname" value="<%=cust_name%>" required></td>
+                     <td><input type="text" name="custname" value="" required></td>
                   </tr>
                   <tr>
                      <td>Credit Card Number</td>
-                     <td><input type="text" name="custcardnumber" value="<%=cust_cardnumber%>" required></td>
+                     <td><input type="text" name="custcardnumber" value="" required></td>
+                     <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custcardnumber">Edit</button></td>
                   </tr>
                   <tr>
                      <td>Expiry Date</td>
-                     <td><input type="text" name="custexpirydate" value="<%=cust_expirydate%>" required></td>
+                     <td><input type="text" name="custexpirydate" value="" required></td>
+                     <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custexpirydate">Edit</button></td>
                   </tr>
                   <tr>
                      <td>CVV Code</td>
-                     <td><input type="text" name="custcvv" value="<%=cust_cvv%>" required></td>
+                     <td><input type="text" name="custcvv" value="" required></td>
+                     <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custcvv">Edit</button></td>
                   </tr>
                   <tr>
                      <td>Issue Number</td>
-                     <td><input type="text" name="custissuenumber" value="<%=cust_issuenumber%>" required></td>
+                     <td><input type="text" name="custissuenumber" value="" required></td>
+                     <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custissuenumber">Edit</button></td>
                   </tr>
                   <tr>
                      <td>Amount</td>
                      <td><input type="text" name="amount" value="" required></td>
+                     <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="amount">Edit</button></td>
                   </tr>
                </tbody>
             </table>
@@ -143,6 +170,34 @@
             <input class="btn ml-2 rounded" type="submit" name="refund" value="Refund">
         </form>
     </div>
+    
+    <div id="numpad" class="text-center">
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName ('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '1';">1</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '2';">2</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '3';">3</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '4';">4</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '5';">5</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '6';">6</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '7';">7</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '8';">8</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '9';">9</button>
+               <button name="numpad-/" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '/';">/</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad-back" type="button" class="btn btn-danger py-3" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value.slice(0, -1);">Back</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '0';">0</button>
+               <button name="numpad-clear" type="button" class="btn btn-danger py-3" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value = '';">Clear</button>
+            </div>
+    </div>
+    
          
          
       
