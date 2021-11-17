@@ -43,6 +43,9 @@
 
 ## Design plan
 
+![Index_design_plan](https://user-images.githubusercontent.com/71987991/142270737-634f89dd-1620-4de7-9ebb-bf7a6933f2ab.png)
+We deviated from our initial rudimetary design as we found more features were required however, it remained useful as an indication of what features were essential and how to lay them out.
+
 ## Test plan
 
 ## Use cases
