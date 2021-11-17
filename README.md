@@ -1,4 +1,5 @@
-# Group B1 AE1-Object Orientated Design And Development (COM528)
+# Group B1 AE1
+# Object Orientated Design And Development (COM528)
 
 ## Group B1 members:
 * Ben Lever 
