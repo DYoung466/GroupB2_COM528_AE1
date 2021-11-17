@@ -7,13 +7,13 @@
 
 ## Software used
 
-* Apache netbeans
-* [Tomcat](http://tomcat.apache.org/ "Tomcat Link")
-* [Maven](http://tomcat.apache.org/ "Tomcat Link")
-* Java
+* [Apache NetBeans](https://netbeans.apache.org/ "Netbeans link")
+* [Apache Tomcat](http://tomcat.apache.org/ "Tomcat link")
+* [Apache Maven](https://maven.apache.org/ "Maven link")
+* [Java 11](https://jdk.java.net/11/ "Jdk link")
 * Web browser
-* Draw.io
-* Bootstrap (formatting)
+* [Draw.io](https://www.diagrams.net/ "Draw.io download link") 
+* [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
 ## Specifications
   * ###  Requirements:
