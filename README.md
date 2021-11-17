@@ -28,6 +28,14 @@
   * The application should interact with the bank service and money should be transfered between accounts/
 
 ## Feature list
+* The program features a simple and effective user interface, formatted through bootstrap
+* Writes details to the properties DAO file
+* Logs all transactions
+* ### (Doesn't check luhn code i think (?))
+* Users are able to:
+     * Enter their card number, name, expiry date, cvv code
+     * Enter and submit a transaction
+     * Refund the transaction
 
 ## Setting up the project
 
