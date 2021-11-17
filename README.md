@@ -15,10 +15,17 @@
 * [Draw.io](https://www.diagrams.net/ "Draw.io download link") 
 * [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
-## Specifications
-  * ###  Requirements:
+## Requirements
+  * ###  AS per the assessment brief:
   * Implement a simple user interface using CSS & Javascript libraries (Bootstrap)
-  * 
+  * Store bank url in properties DAO alongwith shopkeeper details
+  * Record all transactions in a log file
+  * Users should be able to:
+     * Enter a new transaction
+     * Refund a transaction
+     * Check card number via [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm "Luhn algorthim wiki link")
+     *  Allow entry of a card number, name, expiry date, cvv code
+  * The application should interact with the bank service and money should be transfered between accounts/
 
 ## Feature list
 
@@ -31,4 +38,3 @@
 ## Test plan
 
 ## Use cases
-
