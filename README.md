@@ -12,7 +12,7 @@
 * [Apache Maven](https://maven.apache.org/ "Maven link")
 * [Java 11](https://jdk.java.net/11/ "Jdk link")
 * Web browser
-* [Draw.io](https://www.diagrams.net/ "Draw.io download link") 
+* [Diagrams.net](https://www.diagrams.net/ diagrams.net link") 
 * [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
 ## Requirements
