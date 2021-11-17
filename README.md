@@ -16,7 +16,7 @@
 * [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
 ## Requirements
-  * ###  AS per the assessment brief:
+  * ###  As per the assessment brief:
   * Implement a simple user interface using CSS & Javascript libraries (Bootstrap)
   * Store bank url in properties DAO alongwith shopkeeper details
   * Record all transactions in a log file
