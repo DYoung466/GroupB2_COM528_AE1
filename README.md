@@ -88,4 +88,5 @@ We created a UML diagram to help us visualise how the application’s classes wi
 
 ## Robustness diagram
 The robustness diagram shows the steps the user takes while using the application we create. It simplifies the UML diagram we created previously.
+
 ![Copy of robustness](https://user-images.githubusercontent.com/57259804/142338928-b7338077-426e-42bf-89c8-22d4a82a91d3.png)
