@@ -86,8 +86,8 @@ User:
 | Step | Action | Response |
 | -----| ----------- | ----------- |
 | 1    | User interacts with the application through a web browser      |   Sends user to home page     |
-| 2    | User enters the correct card information      |  Using inputs provided user will    |
-| 3    | User enters their card information      |  Using inputs provided user will    |
+| 2    | User enters the correct card information      |  Using inputs provided user will enter details and the applicaiton will check its validity, a pass message will be shown |
+| 3    | User enters wrong card information      | Using inputs provided user will enter details and the applicaiton will check its validity, an error message will be shown  |
 | 4   | User enters the cash amount for transaction      |   Using inputs provided user will enter cash amount    |
 | 5    | User completes transaction      |  Bank client will handle the transaction   |
 
@@ -95,8 +95,8 @@ Administrator:
 | Step | Action | Response |
 | -----| ----------- | ----------- |
 | 1    | Admin enters application  |  Sends admin to home page  |
-| 2    | Text        |   Using inputs provided admin will enter details    |
-| 3    | Title       |  Information is saved to the application     |
+| 2    | Admin enters their information     |   Using inputs provided admin will enter details    |
+| 3    | Admin saves/updates their information     |  Information is saved to the application     |
 | 4    | Admin sends or refunds money       |   Bank client will handle the transaction |
 
 
