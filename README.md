@@ -63,9 +63,10 @@ User:
 | Step | Action | Response |
 | -----| ----------- | ----------- |
 | 1    | User interacts with the application through a web browser      |   Sends user to home page     |
-| 2    | User enters their card information      |  Using inputs provided user will    |
-| 3    | User enters the cash amount for transaction      |   Using inputs provided user will enter cash amount    |
-| 4    | User completes transaction      |  Bank client will handle the transaction   |
+| 2    | User enters the correct card information      |  Using inputs provided user will    |
+| 3    | User enters their card information      |  Using inputs provided user will    |
+| 4   | User enters the cash amount for transaction      |   Using inputs provided user will enter cash amount    |
+| 5    | User completes transaction      |  Bank client will handle the transaction   |
 
 Administrator:
 | Step | Action | Response |
