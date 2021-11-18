@@ -17,14 +17,13 @@
 * [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
 ## Constraints
-* 
 Various constraints were outlined in the assessment brief, we had to take these into consideration when designing and planning the creation of our project.
 
 The application is web-based which brings about numerous constraints we will need to address with our application. Firstly, the application will be web dependent meaning the application will only be accessible to those with an internet connection, this limits how users can interact with the application and how we can access the application to develop, test and update it. Web-based applications will have limited security as they are prone to a variety of attacks that can be carried out through a web browser, usually this would be combated by using a web application firewall as a barrier between the application and the attacker. Our application will not be publicly available so we did not need to worry about the security risks to the application.
 
 The application needs to interact with the bank client provided to us, therefore we are limited to the restrictions of that client. The application we create will interact with this mock bank client using a ReST interface, fortunately ReST interfaces are very flexible and can handle different types of data and calls.
 
-The application is on a small scale with only a single transaction between two users being executed.The application is on a small scale with transactions between two users being executed; this helped us define the scope of the project.
+The application is on a small scale with only a single transaction between two users being executed. The application is on a small scale with transactions between two users being executed; this helped us define the scope of the project.
 
 ## Requirements
   * ###  As per the COM528 assessment brief:
