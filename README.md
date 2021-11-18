@@ -50,16 +50,13 @@ The application is on a small scale with only a single transaction between two u
      * Enter and submit a transaction
      * Refund the transaction
 
-## Setting up the project
+## Roles and Contributions
 
-## Project use
 
 ## Design plan
 
 ![Index_design_plan](https://user-images.githubusercontent.com/71987991/142270737-634f89dd-1620-4de7-9ebb-bf7a6933f2ab.png)
 We deviated from our initial rudimetary design as we found more features were required. However, this remained useful as an indication of what features were essential and how to lay them out.
-
-## Test plan
 
 ## Use cases
 User:
@@ -80,6 +77,8 @@ Administrator:
 
 
 ![Copy of use case](https://user-images.githubusercontent.com/57259804/142338944-44482045-0bf3-4d8e-9c74-b9ea0da7a17c.png)
+
+## Test plan
 
 ## UML Class diagram
 We created a UML diagram to help us visualise how the application’s classes will interact with one another and how our project will work as a whole.
