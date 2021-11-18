@@ -77,3 +77,9 @@ Administrator:
 | 2    | Text        |   Using inputs provided admin will enter details    |
 | 3    | Title       |  Information is saved to the application     |
 | 4    | Admin sends or refunds money       |   Bank client will handle the transaction |
+
+## UML Class diagram
+We created a UML diagram to help us visualise how the application’s classes will interact with one another and how our project will work as a whole.
+
+![Copy of UML](https://user-images.githubusercontent.com/57259804/142338616-c9f8ee18-1b89-4810-b829-9ff36e3cabe6.png)
+
