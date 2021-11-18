@@ -77,9 +77,13 @@ At the start, we all decided on what sections we would complete to benefit the c
 |HTML/CSS/JS|
 |Backend code/Java|
 ## Design plan
-
+### Initial design
 ![Index_design_plan](https://user-images.githubusercontent.com/71987991/142270737-634f89dd-1620-4de7-9ebb-bf7a6933f2ab.png)
+### Current design
+![index_final_design](https://user-images.githubusercontent.com/71987991/142482145-fc1ee248-02cb-4439-a644-d751e2f837ce.PNG)
+
 We deviated from our initial rudimetary design as we found more features were required. However, this remained useful as an indication of what features were essential and how to lay them out.
+Due to the nature of the assignment, a point of sale application, we implemented a keypad to replicate that of a card machine. However, using the keypad is not essential as users can simply type values in, if they find that easier.
 
 ## Use cases
 User:
@@ -125,3 +129,4 @@ We created a UML diagram to help us visualise how the application’s classes wi
 The robustness diagram shows the steps the user takes while using the application we create. It simplifies the UML diagram we created previously.
 
 ![Copy of robustness](https://user-images.githubusercontent.com/57259804/142338928-b7338077-426e-42bf-89c8-22d4a82a91d3.png)
+
