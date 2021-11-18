@@ -43,12 +43,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Shopkeeper Details</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap core CSS -->
+
+        <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="./resources/css/navbar.css" rel="stylesheet">
+
+        <script src="./resources/js/jquery.min.js"></script>
+        <script src="./resources/js/bootstrap.min.js"></script>
+        
     </head>
     <body>
         <jsp:include page="header.jsp" />
+        
         <h1>Bank And Shopkeeper Details</h1>
         <p><%=message %></p>
         <main role="main" class="container">
+        <script src="./resources/js/keypad.js" defer></script>
         <form class="form-card" method="POST">
            <div class="form-group">
               <table class="table">
@@ -69,17 +83,21 @@
                     <tr>
                        <td>Card Number</td>
                        <td><input type="text" name="cardnumber" value="<%=cardnumber%>" required></td>
+                       <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="cardnumber">Edit</button></td>
                     </tr>
                     <td>Issue Number</td>
                     <td><input type="text" name="issuenumber" value="<%=issuenumber%>" required></td>
+                    <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="issuenumber">Edit</button></td>
                     </tr> 
                     <tr>
                        <td>Expiry Date</td>
                        <td><input type="text" name="expirydate" value="<%=expirydate%>" required></td>
+                       <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="expirydate">Edit</button></td>
                     </tr>
                     <tr>
                        <td>CVV Code</td>
                        <td><input type="text" name="cvv" value="<%=cvv%>" ></td>
+                       <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="cvv">Edit</button></td>
                     </tr>
                  </tbody>
               </table>
@@ -87,5 +105,31 @@
               <button class="btn ml-2 rounded" type="submit">Update Bank & Shopkeeper Details</button>
            </div>
         </form>
+                    
+        <div id="numpad" class="text-center">
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName ('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '1';">1</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '2';">2</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '3';">3</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '4';">4</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '5';">5</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '6';">6</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '7';">7</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '8';">8</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '9';">9</button>
+            </div>
+            <br>
+            <div class="btn-group btn-group-lg" role="group">
+               <button name="numpad-back" type="button" class="btn btn-danger py-3" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value.slice(0, -1);">Back</button>
+               <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value + '0';">0</button>
+               <button name="numpad-clear" type="button" class="btn btn-danger py-3" onclick="document.getElementsByName('cardnumber')[0].value = document.getElementsByName('cardnumber')[0].value = '';">Clear</button>
+            </div>
+    </div>
     </body>
 </html>

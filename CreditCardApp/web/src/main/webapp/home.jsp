@@ -17,6 +17,9 @@
 <%@page import="org.solent.com504.oodd.bank.model.dto.BankTransactionStatus"%>
 <%@page import="org.solent.com504.oodd.bank.model.dto.CreditCard"%>
 <%@page import="org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage"%>
+<%@page import="solent.ac.uk.ood.examples.cardcheck.RegexCardValidator"%>
+<%@page import="solent.ac.uk.ood.examples.cardcheck.CardValidationResult"%>
+<%@page import="solent.ac.uk.ood.examples.cardcheck.CalculateLunnDigit"%>
 
 <%@ page import="org.apache.logging.log4j.Logger" %>
 <%@ page import="org.apache.logging.log4j.LogManager" %>
@@ -36,6 +39,7 @@
     String issuenumber = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.issuenumber");
     String name = propertiesDao.getProperty("org.solent.ood.simplepropertiesdaowebapp.name");
     String message = "";
+    String cardcheckreply = "";
     
     // Takes input from user in HTML form for customer details
     String cust_cardnumber = request.getParameter("custcardnumber");
@@ -106,6 +110,16 @@
        double amount = Double.parseDouble(request.getParameter("amount").toString());
        
        reply = client.transferMoney(toCard, fromCard, amount);
+    } else if (request.getParameter("checkcard") != null) {
+        cardcheckreply = "";
+        CardValidationResult result = RegexCardValidator.isValid(cust_cardnumber);
+        
+        if (result.isValid()){
+            cardcheckreply = result.getCardNo() + "&nbsp; is a valid card number issued by &nbsp;" + result.getCardType();
+
+        } else {
+            cardcheckreply = result.getCardNo() + "&nbsp; is an invalid card number issued by &nbsp;" + result.getError();
+        }
     }
 
 %>
@@ -130,33 +144,34 @@
 <main role="main" class="container">
     <p><%=message %></p>
     <p><%=reply %></p>
+    <p><%=cardcheckreply %></p>
     <br>
     <div id="Card Details">
         <form action="./home.jsp" method="POST">  
             <table class="table">
                <tbody>
                   <tr>
-                     <td>Name</td>
-                     <td><input type="text" name="custname" value="" required></td>
+                     <td>Name On Card</td>
+                     <td><input type="text" name="custname" value="<%=cust_name%>" required></td>
                   </tr>
                   <tr>
-                     <td>Credit Card Number</td>
-                     <td><input type="text" name="custcardnumber" value="" required></td>
+                     <td>Card Number</td>
+                     <td><input type="text" name="custcardnumber" value="<%=cust_cardnumber%>" required></td>
                      <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custcardnumber">Edit</button></td>
                   </tr>
                   <tr>
                      <td>Expiry Date</td>
-                     <td><input type="text" name="custexpirydate" value="" required></td>
+                     <td><input type="text" name="custexpirydate" value="<%=cust_expirydate%>" required></td>
                      <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custexpirydate">Edit</button></td>
                   </tr>
                   <tr>
                      <td>CVV Code</td>
-                     <td><input type="text" name="custcvv" value="" required></td>
+                     <td><input type="text" name="custcvv" value="<%=cust_cvv%>" required></td>
                      <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custcvv">Edit</button></td>
                   </tr>
                   <tr>
                      <td>Issue Number</td>
-                     <td><input type="text" name="custissuenumber" value="" required></td>
+                     <td><input type="text" name="custissuenumber" value="<%=cust_issuenumber%>" required></td>
                      <td><button name="editbtn" type="button" class="btn ml-2 rounded" value="custissuenumber">Edit</button></td>
                   </tr>
                   <tr>
@@ -168,6 +183,7 @@
             </table>
             <input class="btn ml-2 rounded" type="submit" name="sendmoney" value="Transfer Money">
             <input class="btn ml-2 rounded" type="submit" name="refund" value="Refund">
+            <input class="btn ml-2 rounded" type="submit" name="checkcard" value="Check Card - Verification">
         </form>
     </div>
     
@@ -188,7 +204,6 @@
                <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '7';">7</button>
                <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '8';">8</button>
                <button name="numpad" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '9';">9</button>
-               <button name="numpad-/" type="button" class="btn ml-2 rounded" onclick="document.getElementsByName('custcardnumber')[0].value = document.getElementsByName('custcardnumber')[0].value + '/';">/</button>
             </div>
             <br>
             <div class="btn-group btn-group-lg" role="group">
