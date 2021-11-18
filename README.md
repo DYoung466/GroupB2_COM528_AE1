@@ -44,14 +44,20 @@ The application is on a small scale with only a single transaction between two u
 * The program features a simple and effective user interface, formatted through bootstrap
 * Writes details to the properties DAO file
 * Logs all transactions
-* ### (Doesn't check luhn code i think (?))
 * Users are able to:
      * Enter their card number, name, expiry date, cvv code
      * Enter and submit a transaction
      * Refund the transaction
+     * Check the entered card
 
 ## Roles and Contributions
+To start this project, all developers were split into different sections of the web interface in order to design and develop an adequate and running application as shown below. We communicated on several calls and messages as well as interacted with eachother in class hours to catch up and guide eachother on improvements or deteriorations in the web application.
 
+| Ben Lever | Daniel Young | Arran Strang |
+|-------------|--------------------|-------------|
+| Github | UML Class Diagram  |Robustness Diagram|
+|Testing| Design Application| Html/css |
+|Refactoring Code|           | Wireframes    |
 
 ## Design plan
 
