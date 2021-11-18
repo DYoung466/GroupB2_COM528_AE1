@@ -16,6 +16,9 @@
 * [Diagrams.net](https://www.diagrams.net/ "diagrams.net link") 
 * [Bootstrap (formatting)](https://getbootstrap.com/ "Bootstrap link")
 
+## Introduction
+With this project, we aim to create an application which allows a user to enter their credit card details and cash amount for a transaction, as well as an administrator to enter their details so money can be transferred between the accounts.  The application will be web based and hosted on a Tomcat Server, different web pages will be made for the administrator and the user. Card details and other information will be entered using text fields and buttons with a keypad also being available to use on the application. 
+
 ## Constraints
 Various constraints were outlined in the assessment brief, we had to take these into consideration when designing and planning the creation of our project.
 
