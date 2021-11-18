@@ -19,6 +19,13 @@
 ## Introduction
 With this project, we aim to create an application which allows a user to enter their credit card details and cash amount for a transaction, as well as an administrator to enter their details so money can be transferred between the accounts.  The application will be web based and hosted on a Tomcat Server, different web pages will be made for the administrator and the user. Card details and other information will be entered using text fields and buttons with a keypad also being available to use on the application. 
 
+## How to setup
+1. `git clone https://github.com/DYoung466/GroupB2_COM528_AE1.git`
+2. Open cloned project and navigate to the web module inside
+3. Run the webserver
+4. Locate at [http://localhost:8080/(http://localhost:8080)]
+(![Run Project](https://user-images.githubusercontent.com/71655080/142452529-2d05e5d8-65b2-4b0c-b112-c2f7bcf7398d.png)
+
 ## Constraints
 Various constraints were outlined in the assessment brief, we had to take these into consideration when designing and planning the creation of our project.
 
@@ -51,15 +58,15 @@ The application is on a small scale with only a single transaction between two u
      * Check the entered card
 
 ## Roles and Contributions
-To start this project, all developers were split into different sections of the web interface in order to design and develop an adequate and running application as shown below. We communicated on several calls and messages as well as interacted with eachother in class hours to catch up and guide eachother on improvements or deteriorations in the web application.
+At the start, we all decided on what sections we would complete to benefit the culmination of the running application as shown in the table below. We spoke regularly on calls and messaged frequently to ensure we all knew what was expected as well as helping one another complete given tasks.
 
 | Ben Lever | Daniel Young | Arran Strang |
 |-------------|--------------------|-------------|
 |Setting Up Project||Robustness Diagram|
 |Testing/Test Plan|Design Plan|UML Class Diagram  |
 |Refactoring Code|Wireframes|Use Cases|
-|Html/css|
-|Backend code|
+|HTML/CSS/JS|
+|Backend code/Java|
 ## Design plan
 
 ![Index_design_plan](https://user-images.githubusercontent.com/71987991/142270737-634f89dd-1620-4de7-9ebb-bf7a6933f2ab.png)
