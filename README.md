@@ -55,10 +55,11 @@ To start this project, all developers were split into different sections of the 
 
 | Ben Lever | Daniel Young | Arran Strang |
 |-------------|--------------------|-------------|
-| Github | UML Class Diagram  |Robustness Diagram|
-|Testing| Design Application| Html/css |
-|Refactoring Code|           | Wireframes    |
-
+|Setting Up Project||Robustness Diagram|
+|Testing/Test Plan|Design Plan|UML Class Diagram  |
+|Refactoring Code|Wireframes|Use Cases|
+|Html/css|
+|Backend code|
 ## Design plan
 
 ![Index_design_plan](https://user-images.githubusercontent.com/71987991/142270737-634f89dd-1620-4de7-9ebb-bf7a6933f2ab.png)
