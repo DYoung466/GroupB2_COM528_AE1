@@ -78,8 +78,14 @@ Administrator:
 | 3    | Title       |  Information is saved to the application     |
 | 4    | Admin sends or refunds money       |   Bank client will handle the transaction |
 
+
+![Copy of use case](https://user-images.githubusercontent.com/57259804/142338944-44482045-0bf3-4d8e-9c74-b9ea0da7a17c.png)
+
 ## UML Class diagram
 We created a UML diagram to help us visualise how the application’s classes will interact with one another and how our project will work as a whole.
 
 ![Copy of UML](https://user-images.githubusercontent.com/57259804/142338616-c9f8ee18-1b89-4810-b829-9ff36e3cabe6.png)
 
+## Robustness diagram
+The robustness diagram shows the steps the user takes while using the application we create. It simplifies the UML diagram we created previously.
+![Copy of robustness](https://user-images.githubusercontent.com/57259804/142338928-b7338077-426e-42bf-89c8-22d4a82a91d3.png)
