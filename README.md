@@ -71,7 +71,7 @@ At the start, we all decided on what sections we would complete to benefit the c
 
 | Ben Lever | Daniel Young | Arran Strang |
 |-------------|--------------------|-------------|
-|Setting Up Project||Robustness Diagram|
+|Setting Up Project|Documentation|Robustness Diagram|
 |Testing/Test Plan|Design Plan|UML Class Diagram  |
 |Refactoring Code|Wireframes|Use Cases|
 |HTML/CSS/JS|
